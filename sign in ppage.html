@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel=stylesheet  href="1.css"/>
+<!-- <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: gray;
+    }
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="password"], input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style> -->
+</head>
+<body>
+<div class="wrapper">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required><br><br>
+        <input type="password" id="password" placeholder="Password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p>Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
+</div>
+
+<div id="signupFormContainer" class="wrapper" style="display:none;">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+     
+        <input type="text" id="newUsername" placeholder="Username" required>
+        <input type="password" id="newPassword" placeholder="Password" required>
+        <input type="submit" value="Sign Up">
+    </form>
+</div>
+
+<script>
+    document.getElementById("signupLink").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("signupFormContainer").style.display = "block";
+    });
+
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var newUsername = document.getElementById("newUsername").value;
+        var newPassword = document.getElementById("newPassword").value;
+
+        localStorage.setItem("username", newUsername);
+        localStorage.setItem("password", newPassword);
+
+        alert("Account created successfully. Please login with your credentials.");
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("signupFormContainer").style.display = "none";
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let username = document.getElementById("username").value;
+        let  password = document.getElementById("password").value;
+        
+        let storedUsername = localStorage.getItem("username");
+        let storedPassword = localStorage.getItem("password");
+
+        if (username === storedUsername && password === storedPassword) {
+            alert("Login successful!");
+         
+        } else {
+            alert("Incorrect . Please try again.");
+        }
+    });
+</script>
+</body>
+</html>

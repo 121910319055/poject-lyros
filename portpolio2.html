@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <!-- Add your own stylesheets or link to external stylesheets here -->
+    <link rel="stylesheet" href="your-styles.css">
+    <!-- Add your own font stylesheets or link to external font stylesheets here -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Your+Font">
+</head>
+<body>
+
+<!-- Your header content goes here -->
+<header>
+    <h1>Your Website Title</h1>
+    <p>Your tagline or description</p>
+</header>
+
+<!-- Your navigation menu goes here -->
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Your main content goes here -->
+<div id="main-content">
+    <!-- Add your sections like About, Portfolio, Contact, etc. -->
+
+    <!-- Portfolio Section -->
+    <div class="portfolio-section">
+        <h2>Your Portfolio</h2>
+
+        <!-- Portfolio Items -->
+        <div class="portfolio-item" onclick="toggleDescription('item1')">
+            <img src="your-image1.jpg" alt="Item 1">
+            <p class="description hidden" id="item1-description">Description for Item 1.</p>
+        </div>
+
+        <div class="portfolio-item" onclick="toggleDescription('item2')">
+            <img src="your-image2.jpg" alt="Item 2">
+            <p class="description hidden" id="item2-description">Description for Item 2.</p>
+        </div>
+
+        <!-- Add more portfolio items as needed -->
+
+    </div>
+    <!-- End Portfolio Section -->
+</div>
+
+<!-- Your footer content goes here -->
+<footer>
+    <p>Copyright © 2024 Your Website Name. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript Code -->
+<script>
+    function toggleDescription(itemId) {
+        var description = document.getElementById(itemId + '-description');
+        if (description.classList.contains('hidden')) {
+            description.classList.remove('hidden');
+        } else {
+            description.classList.add('hidden');
+        }
+    }
+</script>
+
+</body>
+</html>

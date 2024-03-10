@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <hr>
+    <style>
+     
+
+     body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+        background-color: #f4f4f4;
+        background: url('bg.jpg') center center fixed;
+    }
+
+    h2, h3 {
+        color: #333;
+    }
+
+    form {
+        display: none;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+        margin: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 20%;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    hr {
+        margin: 20px 0;
+        border: none;
+        height: 2px;
+        background-color: #ccc;
+    }
+
+    /* Additional Styles */
+    #showSignupBtn, #showSigninBtn {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        margin-right: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    #showSignupBtn:hover, #showSigninBtn:hover {
+        background-color: #2980b9;
+    }
+
+    body {
+        background-color: #ecf0f1;
+    }
+</style>
+
+   
+</head>
+<body>
+
+    <h2>Login Page</h2>
+    
+<!-- Sign-up button -->
+<button type="button" id="showSignupBtn">Sign Up</button>
+
+<!-- Sign-in button -->
+<button type="button" id="showSigninBtn">Sign In</button>
+
+    <!-- Sign-up form -->
+    <form id="signupForm">
+        <h3>Sign-up</h3>
+        <label for="newUsername">New Username:</label>
+        <input type="text" id="newUsername" >
+
+        <br>
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" >
+
+        <br>
+
+        <button type="button" id="signupBtn">Sign Up</button>
+    </form>
+
+    <hr>
+
+    <!-- Sign-in form -->
+    <form id="loginForm">
+        <h3>Sign-in</h3>
+        <hr>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <br>
+
+        <button type="button" id="loginBtn">Login</button>
+    </form>
+
+    <script>
+        let users = [];  /// creating a blank array to push the user name and password
+
+        
+        // Show sign-up form when the "Sign Up" button is clicked
+        document.getElementById('showSignupBtn').addEventListener('click', function() {
+            document.getElementById('signupForm').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none'; // Hide sign-in form
+        });
+
+        // Show sign-in form when the "Sign In" button is clicked
+        document.getElementById('showSigninBtn').addEventListener('click', function() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none'; // Hide sign-up form
+        });
+
+
+
+        document.getElementById('signupBtn').addEventListener('click', function() {   //Event listener for sign-up button to button behalf of onclick we use add event lisiner
+            let  newUsername = document.getElementById('newUsername').value;
+            let newPassword = document.getElementById('newPassword').value;
+
+
+            
+
+            
+            let  existingUser = users.find(user => user.username === newUsername);  //// Check if username already exists if user alderdu exist it will find inthe user array
+            if (existingUser) {
+                alert('Username already exists. Please Login.');
+            } else {
+              
+                users.push({ username: newUsername, password: newPassword });    // Add new user to the list  wether user is new add user to the blank array
+                alert('Sign-up successful!');
+            }
+        });
+
+      
+        document.getElementById('loginBtn').addEventListener('click', function() {  //// Event listener for login button
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+           
+            let user = users.find(user => user.username === username);  //// Find user by username same as up find the user
+
+           
+            if (user && user.password === password) {   // // Check if user enters  and password is correct 
+                alert('Login successful!');
+            } else {
+                alert('Invalid credentials. Please check your username and password.');
+            }
+        });
+    </script>
+
+</body>
+</html>
